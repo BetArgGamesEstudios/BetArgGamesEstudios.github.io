@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BetArgGames</title>
+  <meta name="description" content="Juegos y apps para Android. Toca el Color, Linterna e IA Zombie.">
+  <meta name="theme-color" content="#090b10">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23090b10'/%3E%3Cpath d='M8 22V10h4.2c2.7 0 4.4 1.5 4.4 3.8 0 1.6-.8 2.8-2.2 3.4L18.6 22h-3.4l-3.4-4.4H11V22H8zm3-7h1.1c1.2 0 1.9-.6 1.9-1.6S13.3 11.8 12.1 11.8H11V15z' fill='%23f2c14e'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --bg: #090b10;
+      --surface: #141821;
+      --text: #f4f6fa;
+      --muted: #a7b0c0;
+      --line: rgba(255, 255, 255, 0.09);
+      --gold: #f2c14e;
+      --gold-ink: #1a1406;
+      --shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      line-height: 1.5;
+      background:
+        radial-gradient(900px 420px at 100% -10%, rgba(242, 193, 78, 0.16), transparent 60%),
+        radial-gradient(700px 380px at -10% 10%, rgba(88, 214, 168, 0.1), transparent 55%),
+        var(--bg);
+    }
+
+    a { color: inherit; }
+
+    .wrap {
+      width: min(1080px, calc(100% - 2rem));
+      margin-inline: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      backdrop-filter: blur(16px);
+      background: rgba(9, 11, 16, 0.72);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 4rem;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+
+    .mark {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 0.55rem;
+      display: grid;
+      place-items: center;
+      background: var(--gold);
+      color: var(--gold-ink);
+      font-weight: 800;
+    }
+
+    .bar nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+
+    .bar nav a:hover,
+    .bar nav a:focus-visible { color: var(--text); }
+
+    .hero {
+      padding: 4.5rem 0 2.5rem;
+    }
+
+    .eyebrow {
+      margin: 0 0 0.8rem;
+      color: var(--gold);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.6rem, 7vw, 4.6rem);
+      line-height: 0.95;
+      letter-spacing: -0.045em;
+    }
+
+    .tagline {
+      margin: 1rem 0 0;
+      max-width: 28rem;
+      color: var(--muted);
+      font-size: clamp(1.15rem, 2.4vw, 1.4rem);
+    }
+
+    .apps { padding-bottom: 4rem; }
+
+    .apps h2 {
+      margin: 0 0 1.1rem;
+      font-size: 1.15rem;
+      font-weight: 650;
+      letter-spacing: -0.02em;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      padding: 1.1rem;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent 40%), var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 1.15rem;
+      box-shadow: var(--shadow);
+    }
+
+    .art {
+      height: 148px;
+      border-radius: 0.85rem;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+
+    .color-art {
+      background:
+        radial-gradient(circle at 30% 35%, #ff5d73 0 18%, transparent 19%),
+        radial-gradient(circle at 68% 32%, #f2c14e 0 16%, transparent 17%),
+        radial-gradient(circle at 38% 72%, #3ddc97 0 15%, transparent 16%),
+        radial-gradient(circle at 70% 70%, #7aa2ff 0 17%, transparent 18%),
+        #1c2230;
+    }
+
+    .light-art {
+      background:
+        linear-gradient(180deg, rgba(255, 244, 214, 0.95), rgba(242, 193, 78, 0.15) 42%, transparent 43%),
+        radial-gradient(120px 80px at 50% 78%, #f7f1df, #c9b48a 40%, #2a2418 41%);
+    }
+
+    .zombie-art {
+      background:
+        radial-gradient(circle at 50% 50%, rgba(126, 232, 154, 0.2), transparent 46%),
+        repeating-radial-gradient(circle at 50% 50%, rgba(126, 232, 154, 0.45) 0 1px, transparent 1px 18px),
+        #142018;
+    }
+
+    .light-body,
+    .radar {
+      width: 54px;
+      height: 54px;
+    }
+
+    h3 {
+      margin: 0.2rem 0 0;
+      font-size: 1.35rem;
+      letter-spacing: -0.03em;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      flex: 1;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0.75rem 1rem;
+      border-radius: 999px;
+      background: var(--gold);
+      color: var(--gold-ink);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .btn:hover { filter: brightness(1.06); }
+
+    .btn:focus-visible,
+    a:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 3px;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 1.5rem 0 2rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .foot {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.25rem;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer a { color: var(--text); }
+
+    @media (max-width: 800px) {
+      .grid { grid-template-columns: 1fr; }
+      .hero { padding-top: 3rem; }
+      .bar nav { display: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap bar">
+      <a class="brand" href="index.html">
+        <span class="mark" aria-hidden="true">B</span>
+        BetArgGames
+      </a>
+      <nav>
+        <a href="#apps">Aplicaciones</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero wrap">
+      <p class="eyebrow">Estudio independiente</p>
+      <h1>BetArgGames</h1>
+      <p class="tagline">Juegos y apps para Android</p>
+    </section>
+
+    <section class="apps wrap" id="apps">
+      <h2>Aplicaciones</h2>
+      <div class="grid">
+        <article class="card">
+          <div class="art color-art" role="img" aria-label="Cuatro círculos de color"></div>
+          <h3>Toca el Color</h3>
+          <p>Juego anti-estrés de colores.</p>
+          <a class="btn" href="https://play.google.com/store/apps/details?id=com.betarggames.tocaelcolor">Ver en la tienda</a>
+        </article>
+
+        <article class="card">
+          <div class="art light-art" role="img" aria-label="Haz de luz de una linterna">
+            <svg class="light-body" viewBox="0 0 64 64" aria-hidden="true">
+              <rect x="22" y="28" width="20" height="26" rx="4" fill="#2a2418"/>
+              <rect x="26" y="34" width="12" height="3" rx="1.5" fill="#f2c14e"/>
+            </svg>
+          </div>
+          <h3>Linterna</h3>
+          <p>Linterna simple y rápida.</p>
+          <a class="btn" href="https://play.google.com/store/apps/details?id=com.betargames.linterna">Ver en la tienda</a>
+        </article>
+
+        <article class="card">
+          <div class="art zombie-art" role="img" aria-label="Anillos concéntricos en verde">
+            <svg class="radar" viewBox="0 0 64 64" aria-hidden="true">
+              <circle cx="32" cy="32" r="5" fill="#7ee89a"/>
+            </svg>
+          </div>
+          <h3>IA Zombie</h3>
+          <p>Sobreviví a los zombies.</p>
+          <a class="btn" href="https://play.google.com/store/apps/details?id=com.betarggames.iazombie">Ver en la tienda</a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <a href="mailto:betarggames@gmail.com">betarggames@gmail.com</a>
+      <a href="privacy.html">Política de privacidad</a>
+    </div>
+  </footer>
+</body>
+</html>
