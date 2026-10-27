@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>BetArgGames</title>
-  <meta name="description" content="Juegos y apps para Android. Toca el Color, Linterna e IA Zombie.">
+  <meta name="description" content="Juegos y apps para Android. Toca el Color, Linterna, IA Zombie y Despertador.">
   <meta name="theme-color" content="#090b10">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23090b10'/%3E%3Cpath d='M8 22V10h4.2c2.7 0 4.4 1.5 4.4 3.8 0 1.6-.8 2.8-2.2 3.4L18.6 22h-3.4l-3.4-4.4H11V22H8zm3-7h1.1c1.2 0 1.9-.6 1.9-1.6S13.3 11.8 12.1 11.8H11V15z' fill='%23f2c14e'/%3E%3C/svg%3E">
   <style>
@@ -171,6 +171,17 @@
         #142018;
     }
 
+    .alarm-art {
+      background:
+        radial-gradient(circle at 50% 50%, rgba(242, 193, 78, 0.22), transparent 50%),
+        #1f1a10;
+    }
+
+    .alarm-clock {
+      width: 64px;
+      height: 64px;
+    }
+
     .light-body,
     .radar {
       width: 54px;
@@ -289,6 +300,20 @@
           <h3>IA Zombie</h3>
           <p>Sobreviví a los zombies.</p>
           <a class="btn" href="https://play.google.com/store/apps/details?id=com.betarggames.iazombie">Ver en la tienda</a>
+        </article>
+
+        <article class="card">
+          <div class="art alarm-art" role="img" aria-label="Reloj despertador">
+            <svg class="alarm-clock" viewBox="0 0 64 64" aria-hidden="true">
+              <circle cx="16" cy="14" r="7" fill="#f2c14e"/>
+              <circle cx="48" cy="14" r="7" fill="#f2c14e"/>
+              <circle cx="32" cy="35" r="20" fill="#f7f1df" stroke="#f2c14e" stroke-width="4"/>
+              <path d="M32 23v12l8 5" fill="none" stroke="#2a2418" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>Despertador</h3>
+          <p>Alarmas confiables con posponer, tonos y volumen.</p>
+          <a class="btn" href="https://play.google.com/store/apps/details?id=com.betarggames.despertador">Ver en la tienda</a>
         </article>
       </div>
     </section>
