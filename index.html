@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>BetArgGames</title>
-  <meta name="description" content="Juegos y apps para Android. Toca el Color, Linterna, IA Zombie y Despertador.">
+  <meta name="description" content="Juegos y apps para Android de BetArgGames: Toca el Color, Linterna, IA Zombie, Despertador, Twin Colors, Word Search, trivias y más.">
   <meta name="theme-color" content="#090b10">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23090b10'/%3E%3Cpath d='M8 22V10h4.2c2.7 0 4.4 1.5 4.4 3.8 0 1.6-.8 2.8-2.2 3.4L18.6 22h-3.4l-3.4-4.4H11V22H8zm3-7h1.1c1.2 0 1.9-.6 1.9-1.6S13.3 11.8 12.1 11.8H11V15z' fill='%23f2c14e'/%3E%3C/svg%3E">
   <style>
@@ -141,51 +141,33 @@
       box-shadow: var(--shadow);
     }
 
-    .art {
-      height: 148px;
-      border-radius: 0.85rem;
-      display: grid;
-      place-items: center;
-      overflow: hidden;
+    .card { position: relative; align-items: flex-start; }
+
+    .icon {
+      width: 96px;
+      height: 96px;
+      border-radius: 22px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
     }
 
-    .color-art {
-      background:
-        radial-gradient(circle at 30% 35%, #ff5d73 0 18%, transparent 19%),
-        radial-gradient(circle at 68% 32%, #f2c14e 0 16%, transparent 17%),
-        radial-gradient(circle at 38% 72%, #3ddc97 0 15%, transparent 16%),
-        radial-gradient(circle at 70% 70%, #7aa2ff 0 17%, transparent 18%),
-        #1c2230;
+    .badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(88, 214, 168, 0.16);
+      color: #7ee8c0;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
     }
 
-    .light-art {
-      background:
-        linear-gradient(180deg, rgba(255, 244, 214, 0.95), rgba(242, 193, 78, 0.15) 42%, transparent 43%),
-        radial-gradient(120px 80px at 50% 78%, #f7f1df, #c9b48a 40%, #2a2418 41%);
-    }
-
-    .zombie-art {
-      background:
-        radial-gradient(circle at 50% 50%, rgba(126, 232, 154, 0.2), transparent 46%),
-        repeating-radial-gradient(circle at 50% 50%, rgba(126, 232, 154, 0.45) 0 1px, transparent 1px 18px),
-        #142018;
-    }
-
-    .alarm-art {
-      background:
-        radial-gradient(circle at 50% 50%, rgba(242, 193, 78, 0.22), transparent 50%),
-        #1f1a10;
-    }
-
-    .alarm-clock {
-      width: 64px;
-      height: 64px;
-    }
-
-    .light-body,
-    .radar {
-      width: 54px;
-      height: 54px;
+    .btn-off {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      cursor: default;
     }
 
     h3 {
@@ -201,6 +183,7 @@
     }
 
     .btn {
+      align-self: stretch;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -270,50 +253,105 @@
     </section>
 
     <section class="apps wrap" id="apps">
-      <h2>Aplicaciones</h2>
+      <h2>Aplicaciones en Google Play</h2>
       <div class="grid">
         <article class="card">
-          <div class="art color-art" role="img" aria-label="Cuatro círculos de color"></div>
+          <img class="icon" src="img/toca-el-color.png" alt="Ícono de Toca el Color" width="96" height="96" loading="lazy">
           <h3>Toca el Color</h3>
-          <p>Juego anti-estrés de colores.</p>
-          <a class="btn" href="https://play.google.com/store/apps/details?id=com.betarggames.tocaelcolor">Ver en la tienda</a>
+          <p>Tocá el color brillante, sumá puntos y superá niveles.</p>
+          <a class="btn" href="https://play.google.com/store/apps/details?id=com.betarggames.tocaelcolor" rel="noopener">Disponible en Google Play</a>
         </article>
 
         <article class="card">
-          <div class="art light-art" role="img" aria-label="Haz de luz de una linterna">
-            <svg class="light-body" viewBox="0 0 64 64" aria-hidden="true">
-              <rect x="22" y="28" width="20" height="26" rx="4" fill="#2a2418"/>
-              <rect x="26" y="34" width="12" height="3" rx="1.5" fill="#f2c14e"/>
-            </svg>
-          </div>
+          <img class="icon" src="img/linterna.png" alt="Ícono de Linterna" width="96" height="96" loading="lazy">
           <h3>Linterna</h3>
-          <p>Linterna simple y rápida.</p>
-          <a class="btn" href="https://play.google.com/store/apps/details?id=com.betargames.linterna">Ver en la tienda</a>
+          <p>Linterna LED o pantalla brillante, con SOS y destello rápido.</p>
+          <a class="btn" href="https://play.google.com/store/apps/details?id=com.betargames.linterna" rel="noopener">Disponible en Google Play</a>
         </article>
 
         <article class="card">
-          <div class="art zombie-art" role="img" aria-label="Anillos concéntricos en verde">
-            <svg class="radar" viewBox="0 0 64 64" aria-hidden="true">
-              <circle cx="32" cy="32" r="5" fill="#7ee89a"/>
-            </svg>
-          </div>
+          <img class="icon" src="img/ia-zombie.png" alt="Ícono de IA Zombie" width="96" height="96" loading="lazy">
           <h3>IA Zombie</h3>
-          <p>Sobreviví a los zombies.</p>
-          <a class="btn" href="https://play.google.com/store/apps/details?id=com.betarggames.iazombie">Ver en la tienda</a>
+          <p>Shooter con disparo automático: apuntá y frená la horda zombi. +17.</p>
+          <a class="btn" href="https://play.google.com/store/apps/details?id=com.betarggames.iazombie" rel="noopener">Disponible en Google Play</a>
         </article>
 
         <article class="card">
-          <div class="art alarm-art" role="img" aria-label="Reloj despertador">
-            <svg class="alarm-clock" viewBox="0 0 64 64" aria-hidden="true">
-              <circle cx="16" cy="14" r="7" fill="#f2c14e"/>
-              <circle cx="48" cy="14" r="7" fill="#f2c14e"/>
-              <circle cx="32" cy="35" r="20" fill="#f7f1df" stroke="#f2c14e" stroke-width="4"/>
-              <path d="M32 23v12l8 5" fill="none" stroke="#2a2418" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
+          <img class="icon" src="img/despertador.png" alt="Ícono de Despertador" width="96" height="96" loading="lazy">
           <h3>Despertador</h3>
-          <p>Alarmas confiables con posponer, tonos y volumen.</p>
-          <a class="btn" href="https://play.google.com/store/apps/details?id=com.betarggames.despertador">Ver en la tienda</a>
+          <p>Alarmas sencillas y precisas para despertar a tiempo.</p>
+          <a class="btn" href="https://play.google.com/store/apps/details?id=com.betarggames.despertador" rel="noopener">Disponible en Google Play</a>
+        </article>
+
+        <article class="card">
+          <img class="icon" src="img/twin-colors.png" alt="Ícono de Twin Colors" width="96" height="96" loading="lazy">
+          <h3>Twin Colors</h3>
+          <p>Encontrá los pares de colores en un juego de memoria con fichas neón.</p>
+          <a class="btn" href="https://play.google.com/store/apps/details?id=com.betarggames.twincolors" rel="noopener">Disponible en Google Play</a>
+        </article>
+
+        <article class="card">
+          <img class="icon" src="img/word-search.png" alt="Ícono de Word Search – Sopa de letras" width="96" height="96" loading="lazy">
+          <h3>Word Search – Sopa de letras</h3>
+          <p>Encontrá palabras ocultas en una grilla neón y batí tu récord.</p>
+          <a class="btn" href="https://play.google.com/store/apps/details?id=com.betarggames.wordsearch" rel="noopener">Disponible en Google Play</a>
+        </article>
+
+        <article class="card">
+          <img class="icon" src="img/food-catcher.png" alt="Ícono de Food Catcher" width="96" height="96" loading="lazy">
+          <h3>Food Catcher</h3>
+          <p>¡Atrapá la comida antes de que caiga! Boosts y acción sin pausa.</p>
+          <a class="btn" href="https://play.google.com/store/apps/details?id=com.betarggames.foodcatcher" rel="noopener">Disponible en Google Play</a>
+        </article>
+
+        <article class="card">
+          <img class="icon" src="img/balloon-blast.png" alt="Ícono de Balloon Blast" width="96" height="96" loading="lazy">
+          <h3>Balloon Blast</h3>
+          <p>Inflá el globo antes de que se acabe el tiempo y ganá monedas.</p>
+          <a class="btn" href="https://play.google.com/store/apps/details?id=com.betarggames.balloonblast" rel="noopener">Disponible en Google Play</a>
+        </article>
+
+        <article class="card">
+          <img class="icon" src="img/tap-the-gold.png" alt="Ícono de Tap the Gold" width="96" height="96" loading="lazy">
+          <h3>Tap the Gold</h3>
+          <p>Golpeá la olla, hacé estallar el oro y armá combos cada vez más grandes.</p>
+          <a class="btn" href="https://play.google.com/store/apps/details?id=com.betargames.tapthegold" rel="noopener">Disponible en Google Play</a>
+        </article>
+
+        <article class="card">
+          <img class="icon" src="img/trivia-futbol.png" alt="Ícono de Trivia Fútbol" width="96" height="96" loading="lazy">
+          <h3>Trivia Fútbol</h3>
+          <p>Preguntas de fútbol argentino y mundial para poner a prueba lo que sabés.</p>
+          <a class="btn" href="https://play.google.com/store/apps/details?id=com.betarggames.triviafutbol" rel="noopener">Disponible en Google Play</a>
+        </article>
+
+        <article class="card">
+          <img class="icon" src="img/trivia-rock.png" alt="Ícono de Trivia Rock" width="96" height="96" loading="lazy">
+          <h3>Trivia Rock</h3>
+          <p>Trivia de rock: la partida sigue hasta que perdés 3 vidas.</p>
+          <a class="btn" href="https://play.google.com/store/apps/details?id=com.betargames.triviarock" rel="noopener">Disponible en Google Play</a>
+        </article>
+
+        <article class="card">
+          <img class="icon" src="img/trivia-influencers.png" alt="Ícono de Trivia Influencers" width="96" height="96" loading="lazy">
+          <h3>Trivia Influencers</h3>
+          <p>Preguntas sobre creadores de contenido, con reloj, niveles y dificultades.</p>
+          <a class="btn" href="https://play.google.com/store/apps/details?id=com.betarggames.triviainfluencers" rel="noopener">Disponible en Google Play</a>
+        </article>
+
+        <article class="card">
+          <img class="icon" src="img/bookradar.png" alt="Ícono de BookRadar" width="96" height="96" loading="lazy">
+          <h3>BookRadar</h3>
+          <p>Descubrí libros gratis y encontrá tu próxima lectura. Sin anuncios.</p>
+          <a class="btn" href="https://play.google.com/store/apps/details?id=com.bookradar.app" rel="noopener">Disponible en Google Play</a>
+        </article>
+
+        <article class="card soon">
+          <span class="badge">Próximamente</span>
+          <img class="icon" src="img/trash-alert.png" alt="Ícono de Trash Alert" width="96" height="96" loading="lazy">
+          <h3>Trash Alert</h3>
+          <p>Recordatorios para sacar la basura y el reciclaje a tiempo.</p>
+          <span class="btn btn-off" aria-disabled="true">Próximamente en Google Play</span>
         </article>
       </div>
     </section>
@@ -321,7 +359,8 @@
 
   <footer>
     <div class="wrap foot">
-      <a href="mailto:betarggames@gmail.com">betarggames@gmail.com</a>
+      <span>© 2026 BetArgGames</span>
+      <span>Contacto y privacidad: <a href="mailto:betarggames@gmail.com">betarggames@gmail.com</a></span>
       <a href="privacy.html">Política de privacidad</a>
     </div>
   </footer>
