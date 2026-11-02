@@ -163,13 +163,6 @@
       letter-spacing: 0.04em;
     }
 
-    .btn-off {
-      background: transparent;
-      color: var(--muted);
-      border: 1px solid var(--line);
-      cursor: default;
-    }
-
     h3 {
       margin: 0.2rem 0 0;
       font-size: 1.35rem;
@@ -197,6 +190,15 @@
     }
 
     .btn:hover { filter: brightness(1.06); }
+
+    .btn.btn-off {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      cursor: default;
+    }
+
+    .btn.btn-off:hover { filter: none; }
 
     .btn:focus-visible,
     a:focus-visible {
